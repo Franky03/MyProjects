@@ -1,35 +1,40 @@
-# import turtle
-from prettytable import PrettyTable
-table= PrettyTable()
-table.add_column("Pokemon names", ['Pikachu', 'Squirtle', 'Charmander'])
-table.add_column("Type", ['Electric', 'Water', 'Fire'])
-table.align= 'l'
-print(table)
+import turtle as tl
+import random
 
-# def posit():
-#     timmy.color("black")
-#     timmy.left(90)
+timmy= tl.Turtle()
+tom= tl.Turtle()
+tom.shape("turtle")
+tom.color("darkblue")
+tom.hideturtle()
+timmy.shape("arrow")
+timmy.color("darkblue")
+#Dashed Line
+
+# for c in range(4):
+#     for _ in range(10):
+#         timmy.forward(5)
+#         timmy.penup()
+#         timmy.forward(5)
+#         timmy.pendown()
+#     timmy.right(90)
+timmy.speed(4)
+colors=['darkred', 'darkblue', 'chartreuse', 'yellow', 'purple', 'pink', 'deep sky blue', 'magenta', 'blue']
+def shap(numS):
+    for i in range(numS):
+        timmy.forward(100)
+        timmy.left(360/numS)
+
+for _ in range(3, 11):
+    col= random.choice(colors)
+    shap(_)
+    timmy.color(col)
+    colors.remove(col)
+
+#Square
+# for c in range(4):
 #     timmy.forward(100)
 #     timmy.left(90)
-#     timmy.forward(10)
-#     timmy.right(90)
-#     timmy.forward(10)
-#     timmy.right(90)
-#     timmy.forward(20)
 
-# timmy= turtle.Turtle()
-# timmy.hideturtle()
-# posit()
-# timmy.color('green')
-# turtle.bgcolor('black')
-# turtle.speed(200)
-# a=0
-# while a<200:
-#     timmy.right(a)
-#     timmy.forward(a *3)
-#     a+=1
-
-# screen= turtle.Screen()
-# screen.canvheight
-# screen.exitonclick()
+screen= tl.Screen()
+screen.exitonclick()
 
