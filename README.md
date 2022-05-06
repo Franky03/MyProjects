@@ -9,4 +9,5 @@
   * [HigherLower](https://github.com/Franky03/MyProjects/blob/master/Udemy/HigherLower.py)
   * [Coffee Machine](https://github.com/Franky03/MyProjects/blob/master/Udemy/CoffeMachine.py)
   * [Quiz](https://github.com/Franky03/MyProjects/blob/master/Udemy/Quiz.py)
+  * [HirstPainting (Turtle)](https://github.com/Franky03/MyProjects/blob/master/Udemy/HirstPainting.py)
   * ...
