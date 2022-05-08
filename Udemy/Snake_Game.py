@@ -5,6 +5,7 @@ import time
 is_on= True
 score=0
 highscore=0
+sp= 1
 
 UP= 90
 DOWN= 270
@@ -36,6 +37,7 @@ food.goto(x, y)
 
 
 #Create Snake 
+
 start_pos=[(0, 0), (-20, 0), (-40, 0)]
 segments=[]
 
@@ -99,11 +101,7 @@ screen.onkey(key='Left', fun= mlef)
 
 while is_on:
     pen.write(f"Score : {score}  High Score : {highscore}", align= "center", font= ("candara", 12, "bold"))
-    
-    _= 1
-    for seg in segments:
-        seg.speed(_)
-    # segments[0].speed(_)
+    # segments[0].speed(sp)
     move_forward()
     if snake.xcor()>= 288 or snake.xcor() <= -288:
         is_on=False
@@ -123,18 +121,20 @@ while is_on:
         food.color(random.choice(colors))
         food.shape(random.choice(shapes))
         new_seg= Turtle()
-        new_seg.speed(0)
+        new_seg.speed(sp)
         new_seg.shape("square")
         new_seg.color('orange')
         new_seg.penup()
         segments.append(new_seg)
         score+=1
-        _ +=1
+        sp += 2
         if score>highscore:
             highscore= score
 
         pen.clear()
         pen.write(f"Score : {score}  High Score : {highscore}", align= "center", font= ("candara", 12, "bold"))
+        
+        head.speed(sp)
 
 
         
