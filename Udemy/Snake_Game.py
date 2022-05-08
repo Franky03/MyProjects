@@ -3,15 +3,21 @@ import random
 import time
 
 is_on= True
-delay=0.1
 score=0
 highscore=0
+
+UP= 90
+DOWN= 270
+LEFT= 180
+RIGHT= 0
 
 screen= Screen()
 screen.bgcolor('black')
 screen.setup(width=600, height=600)
 screen.title("Snake Game")
 screen.tracer(0)
+
+#Create The Snake's Food
 
 food= Turtle()
 food.penup()
@@ -24,6 +30,12 @@ y= random.randint(-280, 280)
 food.goto(x, y)
 food.shapesize(0.8)
 
+x= random.randint(-280, 280)
+y= random.randint(-280, 280)
+food.goto(x, y)
+
+
+#Create Snake 
 start_pos=[(0, 0), (-20, 0), (-40, 0)]
 segments=[]
 
@@ -36,13 +48,16 @@ for position in start_pos:
     snake.speed(1)
     segments.append(snake)
 
+head= segments[0]
 
+#Put the Score in screen
 pen= Turtle()
 pen.pencolor("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 280)
-# pen.write(f"Score : {score}  High Score : {highscore}", align= "center", font= ("candara", 12, "bold"))
+
+#Functions to move the snake
 
 def move_forward():
     screen.update()
@@ -52,29 +67,43 @@ def move_forward():
         new_y= segments[seg_num-1].ycor()
         segments[seg_num].goto(new_x, new_y)
     
-    segments[0].forward(10)
+    head.forward(10)
 
 
 def mlef():
-    segments[0].left(90)
+    if head.heading() != RIGHT:
+        head.setheading(LEFT)
 
 def mrig():
-    segments[0].right(90)
+    if head.heading() != LEFT:
+        head.setheading(RIGHT)
+
+def mup():
+    if head.heading() != DOWN:
+        head.setheading(UP)
+def mdown():
+    if head.heading() != UP:
+        head.setheading(DOWN)
+
+#Keys move
 
 screen.listen()
-
+screen.onkey(key= 'Up', fun= mup)
+screen.onkey(key='Down', fun= mdown)
 screen.onkey(key='Right', fun= mrig)
 screen.onkey(key='Left', fun= mlef)
 
 
-x= random.randint(-280, 280)
-y= random.randint(-280, 280)
-food.goto(x, y)
 
+# Create the Game
 
 while is_on:
+    pen.write(f"Score : {score}  High Score : {highscore}", align= "center", font= ("candara", 12, "bold"))
+    
     _= 1
-    segments[0].speed(_)
+    for seg in segments:
+        seg.speed(_)
+    # segments[0].speed(_)
     move_forward()
     if snake.xcor()>= 288 or snake.xcor() <= -288:
         is_on=False
@@ -101,7 +130,6 @@ while is_on:
         segments.append(new_seg)
         score+=1
         _ +=1
-        delay -=0.001
         if score>highscore:
             highscore= score
 
