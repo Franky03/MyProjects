@@ -58,13 +58,18 @@ class Snake(Turtle):
     def mdown(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
-    def tail(self):
-        new_seg= Turtle()
-        new_seg.shape("square")
-        new_seg.color('orange')
-        new_seg.penup()
-        new_seg.speed("fastest")
-        self.segments.append(new_seg)
+    def tail(self, position):
+        snake= Turtle()
+        snake.penup()
+        snake.color('orange')
+        snake.shape('square')
+        snake.goto(position)
+        snake.speed(1)
+        self.segments.append(snake)
+
+    def extend(self):
+        self.tail(self.segments[-1].position())
+    
     def restart(self):
         global life, score
         life-=1
@@ -126,29 +131,44 @@ class Pen(Turtle):
         self.write(f"Score : {score}  High Score : {highscore}", align= "center", font= ("candara", 12, "bold"))
         self.goto(280,280)
         self.write(f'Life: {life}', align='right', font= ("candara", 12, "bold"))
-
+    def game_over(self):
+        self.goto(0,0)
+        self.write("GAME OVER", align='center', font=("candara", 22, "bold"))
 pen= Pen()
 
 #GAME
 
 while game_is_on:
+
     screen.update()
     time.sleep(0.1)
     snake.move()
 
+    #Detect Colision with wall.
+
     if snake.head.xcor()>= 288 or snake.head.xcor() <= -288 or snake.head.ycor() >=298 or snake.head.ycor() <=-298:
         snake.restart()
         pen.refresh()
+
+    #Detect colision with tail.
+
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment)<10:
+            snake.restart()
+            pen.refresh()
+
+    #Detect colision with food.
     
     if snake.head.distance(food)<15:
-        snake.tail()
+        snake.extend()
         food.refresh()
         score+=1
         highscore +=1
         pen.refresh() 
     
     if life==0:
-        game_is_on=False
+        pen.game_over()
+        game_is_on=False  
 
          
 

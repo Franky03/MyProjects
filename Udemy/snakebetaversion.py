@@ -69,7 +69,7 @@ def move_forward():
         new_y= segments[seg_num-1].ycor()
         segments[seg_num].goto(new_x, new_y)
     
-    head.forward(10)
+    head.forward(20)
 
 
 def mlef():
@@ -113,6 +113,11 @@ while is_on:
         # for segment in segments:
         #     segment.goto(1000,1000)
         # segments.clear()
+    for segment in segments:
+        if segment== head:
+            pass
+        elif head.distance(segment)<10:
+            is_on= False
 
     if snake.distance(food)< 20:
         x= random.randint(-280, 280)
@@ -128,6 +133,7 @@ while is_on:
         segments.append(new_seg)
         score+=1
         sp += 2
+
         if score>highscore:
             highscore= score
 
