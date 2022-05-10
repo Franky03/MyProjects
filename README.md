@@ -5,6 +5,7 @@
  Udemy/ 100DaysofCode Projects: <br/>
   * [Snake Game](https://github.com/Franky03/MyProjects/blob/master/Udemy/SnakeGame.py)
   * [Pong](https://github.com/Franky03/MyProjects/blob/master/Udemy/Pong.py)
+  * [Crossy Road](https://github.com/Franky03/MyProjects/blob/master/Udemy/CrossingCapstone.py)
   * [Hangman](https://github.com/Franky03/MyProjects/blob/master/Udemy/Day7/Hangman.py)
   * [Ceasar Cipher](https://github.com/Franky03/MyProjects/blob/master/Udemy/Day8.py)
   * [BlackJack](https://github.com/Franky03/MyProjects/blob/master/Udemy/BlackJack.py)
