@@ -10,7 +10,8 @@ LEFT= 180
 RIGHT= 0
 game_is_on= True
 score=0
-highscore=0
+with open("./Udemy/Snake/data.txt") as file:
+    highscore= int(file.read())
 life=3
 
 screen= Screen()
@@ -71,11 +72,16 @@ class Snake(Turtle):
         self.tail(self.segments[-1].position())
     
     def restart(self):
-        global life, score
+        global life, score, highscore
         life-=1
         for seg in self.segments:
             seg.goto(1000,1000)
         self.segments.clear()
+
+        if score > highscore:
+            highscore = score
+            with open("./Udemy/Snake/data.txt", mode='w') as file:
+                file.write(str(highscore))
         score=0
         time.sleep(1)
         self.__init__()
@@ -163,7 +169,7 @@ while game_is_on:
         snake.extend()
         food.refresh()
         score+=1
-        highscore +=1
+        # highscore +=1
         pen.refresh() 
     
     if life==0:
