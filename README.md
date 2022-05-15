@@ -14,4 +14,5 @@
   * [Quiz](https://github.com/Franky03/MyProjects/blob/master/Udemy/Quiz.py)
   * [HirstPainting (Turtle)](https://github.com/Franky03/MyProjects/blob/master/Udemy/HirstPainting.py)
   * [Turtle Race](https://github.com/Franky03/MyProjects/blob/master/Udemy/TurtleRace.py)
+  * [U.S. States Game](https://github.com/Franky03/MyProjects/blob/main/Udemy/us-states-game-start/main.py)
   * ...
